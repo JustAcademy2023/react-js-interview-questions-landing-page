@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>React JS Interview Questions and Answers for Developers</title>
+<meta name="description" content="Flip through real react js interview questions, filter by topic, check your readiness and find guides, courses and a mentor led demo for developers preparing in Delhi.">
+<meta name="keywords" content="react js interview questions, react interview questions and answers, react hooks interview questions, react coding test questions, experienced react js developer interview questions, react js training in delhi">
+<meta property="og:title" content="React JS Interview Questions and Answers for Developers">
+<meta property="og:description" content="An interactive flashcard deck, topic explorer and readiness check for your next react interview.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#3D4BFF">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%233D4BFF'/%3E%3Ctext x='32' y='42' font-size='30' text-anchor='middle' fill='%23FFD23F' font-family='monospace' font-weight='700'%3E%7B%7D%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#17143B; --blue:#3D4BFF; --sun:#FFD23F; --mint:#A8F0C6; --pink:#FF8FB1; --paper:#F2F0FF; --white:#FFFFFF;
+  --line:2.5px solid var(--ink);
+  --pop:5px 5px 0 var(--ink);
+  --display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--body);font-size:1.0625rem;line-height:1.65;color:var(--ink);background:var(--paper);
+  background-image:radial-gradient(rgba(23,20,59,.12) 1.2px,transparent 1.2px);background-size:26px 26px;overflow-x:hidden}
+img,svg{max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);line-height:1.08;margin:0;letter-spacing:-.02em}
+p{margin:0}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1160px,92%);margin-inline:auto}
+.skip{position:absolute;left:-999px;top:8px;background:var(--sun);padding:.6rem 1rem;border:var(--line);z-index:100}
+.skip:focus{left:8px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font:600 1rem var(--body);text-decoration:none;cursor:pointer;
+  padding:.8rem 1.35rem;border:var(--line);border-radius:14px;background:var(--sun);color:var(--ink);box-shadow:var(--pop);transition:transform .12s,box-shadow .12s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
+.btn:active{transform:translate(4px,4px);box-shadow:1px 1px 0 var(--ink)}
+.btn.blue{background:var(--blue);color:var(--white)}
+.btn.mint{background:var(--mint)}
+.btn.white{background:var(--white)}
+.btn.small{padding:.55rem 1rem;font-size:.95rem;box-shadow:3px 3px 0 var(--ink)}
+
+/* header */
+header.top{position:sticky;top:0;z-index:50;background:rgba(242,240,255,.92);backdrop-filter:blur(8px);border-bottom:var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.75rem 0}
+.brand{display:flex;align-items:center;gap:.65rem;text-decoration:none;font:800 1.3rem var(--display)}
+.brand-mark{display:grid;place-items:center;width:42px;height:42px;background:var(--blue);color:var(--sun);border:var(--line);border-radius:12px;
+  box-shadow:3px 3px 0 var(--ink);font:700 1.05rem ui-monospace,Menlo,Consolas,monospace;transition:transform .25s}
+.brand:hover .brand-mark{transform:rotate(-8deg) scale(1.06)}
+nav ul{display:flex;gap:.4rem;list-style:none;margin:0;padding:0;align-items:center}
+nav a.link{display:block;padding:.45rem .85rem;border-radius:999px;text-decoration:none;font-weight:600}
+nav a.link:hover{background:var(--sun)}
+.menu-btn{display:none;background:var(--white);border:var(--line);border-radius:12px;padding:.5rem .8rem;font:600 1rem var(--body);cursor:pointer}
+
+/* hero */
+.hero{padding:clamp(2.5rem,6vw,5rem) 0 clamp(3rem,6vw,5rem)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+.hero h1{font-size:clamp(2.5rem,6vw,4.6rem);font-weight:800}
+.hero h1 .hl{background:linear-gradient(transparent 58%,var(--sun) 58% 92%,transparent 92%);padding:0 .1em}
+.hero .lede{margin-top:1.3rem;font-size:1.2rem;max-width:34rem}
+.hero-cta{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.8rem}
+.stickers{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:2rem}
+.sticker{font:600 .95rem ui-monospace,Menlo,Consolas,monospace;background:var(--white);border:var(--line);border-radius:10px;padding:.3rem .7rem;box-shadow:3px 3px 0 var(--ink);transition:transform .2s}
+.sticker:nth-child(1){transform:rotate(-3deg);background:var(--mint)}
+.sticker:nth-child(2){transform:rotate(2deg)}
+.sticker:nth-child(3){transform:rotate(-1.5deg);background:var(--pink)}
+.sticker:nth-child(4){transform:rotate(3deg);background:var(--sun)}
+.sticker:hover{transform:rotate(0) scale(1.1)}
+
+/* deck */
+.deck{position:relative}
+.deck-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:.8rem;font-weight:600}
+.dots{display:flex;gap:6px;flex-wrap:wrap}
+.dots i{width:12px;height:12px;border:2px solid var(--ink);border-radius:50%;background:var(--white);display:block;transition:background .2s}
+.dots i.now{background:var(--sun);transform:scale(1.2)}
+.dots i.good{background:var(--mint)}
+.dots i.bad{background:var(--pink)}
+.stack{position:relative;height:clamp(300px,42vw,340px)}
+.stack::before,.stack::after{content:"";position:absolute;inset:0;border:var(--line);border-radius:22px;background:var(--white)}
+.stack::before{transform:translate(12px,12px) rotate(2.5deg);background:var(--pink)}
+.stack::after{transform:translate(6px,6px) rotate(-1.5deg);background:var(--mint)}
+.card{position:absolute;inset:0;z-index:2;perspective:1200px;border:0;background:none;padding:0;cursor:pointer;text-align:left;font:inherit;color:inherit;width:100%}
+.card-in{position:absolute;inset:0;transition:transform .6s cubic-bezier(.3,1.3,.5,1);transform-style:preserve-3d}
+.card.flipped .card-in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:var(--line);border-radius:22px;padding:1.5rem;
+  display:flex;flex-direction:column;justify-content:space-between;box-shadow:var(--pop);overflow:auto}
+.face.front{background:var(--white)}
+.face.back{background:var(--sun);transform:rotateY(180deg)}
+.tag{align-self:flex-start;font-weight:600;font-size:.9rem;background:var(--paper);border:2px solid var(--ink);border-radius:999px;padding:.15rem .8rem}
+.face h3{font-size:clamp(1.3rem,2.6vw,1.75rem);margin:.8rem 0}
+.face p{font-size:1rem;line-height:1.55}
+.hint{font-size:.9rem;font-weight:600;opacity:.7}
+.card.leave{animation:leave .45s forwards}
+@keyframes leave{to{transform:translateX(120%) rotate(14deg);opacity:0}}
+.card.enter{animation:enter .4s}
+@keyframes enter{from{transform:translateY(24px) scale(.96);opacity:0}}
+.deck-actions{display:flex;gap:.8rem;margin-top:1.6rem;flex-wrap:wrap}
+.deck-actions .btn{flex:1 1 140px}
+.deck-actions .btn[disabled]{opacity:.45;pointer-events:none}
+.result{border:var(--line);border-radius:22px;background:var(--white);box-shadow:var(--pop);padding:1.6rem;position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;justify-content:center;gap:.8rem}
+.result h3{font-size:1.8rem}
+
+/* sections */
+section{padding:clamp(3rem,7vw,5.5rem) 0}
+.sec-head{max-width:40rem;margin-bottom:2.2rem}
+.sec-head h2{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:800}
+.sec-head p{margin-top:.9rem;font-size:1.1rem}
+.band{background:var(--blue);color:var(--white);border-block:var(--line)}
+.band .sec-head p{color:#E7E9FF}
+
+/* explorer */
+.tools{display:flex;flex-wrap:wrap;gap:.7rem;align-items:center;margin-bottom:1.6rem}
+.chip{font:600 .98rem var(--body);cursor:pointer;background:var(--white);color:var(--ink);border:var(--line);border-radius:999px;padding:.45rem 1.05rem;transition:transform .12s,background .12s}
+.chip:hover{transform:translateY(-2px)}
+.chip[aria-pressed="true"]{background:var(--sun);box-shadow:3px 3px 0 var(--ink)}
+.search{margin-left:auto;flex:1 1 220px;max-width:320px;font:500 1rem var(--body);padding:.6rem 1rem;border:var(--line);border-radius:999px;background:var(--white);color:var(--ink)}
+.qgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.1rem;align-items:start}
+details.q{background:var(--white);color:var(--ink);border:var(--line);border-radius:18px;box-shadow:var(--pop);transition:transform .15s}
+details.q:hover{transform:translateY(-3px)}
+details.q[open]{background:var(--mint)}
+details.q summary{cursor:pointer;list-style:none;padding:1.1rem 1.3rem;font:700 1.12rem var(--display);display:flex;gap:.9rem;justify-content:space-between;align-items:flex-start;line-height:1.25}
+details.q summary::-webkit-details-marker{display:none}
+details.q summary::after{content:"+";flex:none;display:grid;place-items:center;width:28px;height:28px;border:2px solid var(--ink);border-radius:50%;background:var(--sun);font:700 1.1rem var(--body);transition:transform .25s}
+details.q[open] summary::after{transform:rotate(135deg)}
+details.q .ans{padding:0 1.3rem 1.2rem;font-size:1rem}
+details.q .ans small{display:inline-block;margin-bottom:.5rem;font-weight:600;background:var(--white);border:2px solid var(--ink);border-radius:999px;padding:0 .7rem}
+.empty{grid-column:1/-1;background:var(--white);color:var(--ink);border:var(--line);border-radius:18px;padding:1.4rem;font-weight:600}
+
+/* readiness */
+.ready-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:start}
+.checks{display:grid;gap:.7rem}
+.check{display:flex;gap:.8rem;align-items:center;background:var(--white);border:var(--line);border-radius:14px;padding:.8rem 1rem;cursor:pointer;font-weight:500;transition:background .15s,transform .15s}
+.check:hover{transform:translateX(4px)}
+.check input{appearance:none;flex:none;width:26px;height:26px;border:var(--line);border-radius:8px;background:var(--paper);cursor:pointer;display:grid;place-items:center}
+.check input::after{content:"";width:12px;height:7px;border-left:3px solid var(--ink);border-bottom:3px solid var(--ink);transform:rotate(-45deg) scale(0);transition:transform .15s;margin-top:-3px}
+.check input:checked{background:var(--mint)}
+.check input:checked::after{transform:rotate(-45deg) scale(1)}
+.check:has(input:checked){background:#EAFBF1}
+.meter-card{position:sticky;top:96px;background:var(--sun);border:var(--line);border-radius:24px;box-shadow:var(--pop);padding:1.6rem}
+.battery{height:46px;border:var(--line);border-radius:14px;background:var(--white);overflow:hidden;margin:1rem 0}
+.battery span{display:block;height:100%;width:0;background:var(--blue);transition:width .5s cubic-bezier(.3,1.3,.5,1)}
+.meter-card .pct{font:800 3.4rem var(--display);line-height:1}
+.meter-card p.msg{font-weight:500;min-height:3.3em}
+
+/* resources */
+.rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.3rem}
+a.res{display:flex;flex-direction:column;gap:.7rem;text-decoration:none;background:var(--white);color:var(--ink);border:var(--line);border-radius:20px;box-shadow:var(--pop);padding:1.4rem;transition:transform .15s,box-shadow .15s}
+a.res:hover{transform:translate(-3px,-3px) rotate(-.6deg);box-shadow:8px 8px 0 var(--ink)}
+a.res:nth-child(even):hover{transform:translate(-3px,-3px) rotate(.6deg)}
+a.res .kind{align-self:flex-start;font-weight:600;font-size:.88rem;border:2px solid var(--ink);border-radius:999px;padding:0 .75rem;background:var(--mint)}
+a.res.course .kind{background:var(--sun)}
+a.res.boot .kind{background:var(--pink)}
+a.res h3{font-size:1.28rem}
+a.res p{font-size:.98rem;flex:1}
+a.res .go{font-weight:700;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px}
+.sub-title{font:700 1.5rem var(--display);margin:2.8rem 0 1.2rem}
+.sub-title:first-of-type{margin-top:0}
+
+/* cta */
+.cta{background:var(--pink);border:var(--line);border-radius:28px;box-shadow:8px 8px 0 var(--ink);padding:clamp(1.8rem,5vw,3.5rem);display:grid;grid-template-columns:1.3fr .7fr;gap:2rem;align-items:center}
+.cta h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800}
+.cta p{margin-top:.8rem;font-size:1.1rem}
+.cta .btns{display:grid;gap:.9rem}
+
+/* footer */
+footer{background:var(--ink);color:#E5E3FF;padding:3.2rem 0 2rem;margin-top:3rem;border-top:var(--line)}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:2rem}
+footer h4{font:700 1.05rem var(--display);color:var(--sun);margin:0 0 .8rem}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:.45rem}
+footer a{text-decoration:none}
+footer a:hover{color:var(--sun);text-decoration:underline}
+footer .brand{color:var(--white)}
+footer .about{margin-top:.9rem;max-width:22rem;font-size:.98rem}
+.legal{margin-top:2.4rem;padding-top:1.3rem;border-top:1px solid rgba(255,255,255,.2);font-size:.92rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.6rem}
+
+/* confetti */
+.bit{position:fixed;top:-12px;width:10px;height:14px;border:2px solid var(--ink);z-index:200;pointer-events:none;animation:fall 1.8s ease-in forwards}
+@keyframes fall{to{transform:translateY(105vh) rotate(540deg);opacity:.9}}
+
+@media (max-width:900px){
+  .hero-grid,.ready-grid,.cta{grid-template-columns:1fr}
+  .qgrid{grid-template-columns:1fr}
+  .foot{grid-template-columns:1fr 1fr}
+  .meter-card{position:static}
+  .menu-btn{display:block}
+  nav ul{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;background:var(--paper);border-bottom:var(--line);padding:1rem 4%}
+  nav ul.open{display:flex}
+  header.top{position:sticky}
+  .bar{position:relative}
+}
+@media (max-width:520px){ .foot{grid-template-columns:1fr} .search{max-width:none;margin-left:0} }
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" href="#top" aria-label="React interview prep home">
+      <span class="brand-mark" aria-hidden="true">{ }</span>
+      <span>ReactReady</span>
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navList">Menu</button>
+    <nav aria-label="Main">
+      <ul id="navList">
+        <li><a class="link" href="#practice">Practice</a></li>
+        <li><a class="link" href="#explore">Questions</a></li>
+        <li><a class="link" href="#ready">Readiness</a></li>
+        <li><a class="link" href="#learn">Guides and courses</a></li>
+        <li><a class="btn small" href="https://www.justacademy.co/register-for-course-demo" target="_blank" rel="noopener">Book a free demo</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <!-- HERO -->
+  <div id="top"></div>
+  <section class="hero" id="practice" style="padding-bottom:clamp(3rem,6vw,5rem)">
+    <div class="wrap hero-grid">
+      <div>
+        <h1>Say the answer <span class="hl">out loud</span> before the interviewer asks.</h1>
+        <p class="lede">Most react js interview questions are not hard. They are just hard to explain on the spot. Flip the cards, argue with the answers, and find out what you can really say with a straight face.</p>
+        <div class="hero-cta">
+          <a class="btn blue" href="#explore">Browse all questions</a>
+          <a class="btn white" href="https://www.justacademy.co/blog-detail/react-js-interview-questions-and-answers-for-developers" target="_blank" rel="noopener">Read the full guide</a>
+        </div>
+        <div class="stickers" aria-hidden="true">
+          <span class="sticker">useEffect()</span>
+          <span class="sticker">key={id}</span>
+          <span class="sticker">&lt;Suspense /&gt;</span>
+          <span class="sticker">useRef</span>
+        </div>
+      </div>
+
+      <div class="deck" aria-label="Flashcard practice deck">
+        <div class="deck-head">
+          <span id="deckCount">Card 1 of 8</span>
+          <div class="dots" id="dots" aria-hidden="true"></div>
+        </div>
+        <div class="stack" id="stack"></div>
+        <div class="deck-actions">
+          <button class="btn white" id="flipBtn" type="button">Show answer</button>
+          <button class="btn mint" id="goodBtn" type="button" disabled>I nailed it</button>
+          <button class="btn" id="badBtn" type="button" disabled>Need practice</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPLORER -->
+  <section class="band" id="explore">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Pick a topic and poke around</h2>
+        <p>Every question below has a short answer you can say in under a minute. Filter by theme, search by keyword, and open only what you are unsure about.</p>
+      </div>
+      <div class="tools" role="group" aria-label="Filter by topic" id="chips"></div>
+      <div class="qgrid" id="qgrid" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- READINESS -->
+  <section id="ready">
+    <div class="wrap ready-grid">
+      <div>
+        <div class="sec-head" style="margin-bottom:1.5rem">
+          <h2>How ready are you, honestly?</h2>
+          <p>Tick only the things you could explain to a friend without looking anything up. The meter fills as you go, and it will not flatter you.</p>
+        </div>
+        <div class="checks" id="checks"></div>
+      </div>
+      <aside class="meter-card" aria-live="polite">
+        <div class="pct" id="pct">0%</div>
+        <div class="battery" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="bar"><span id="fill"></span></div>
+        <p class="msg" id="msg">Nothing ticked yet. Start with the first one, it is the easiest.</p>
+        <button class="btn white small" id="reset" type="button" style="margin-top:1rem">Start over</button>
+      </aside>
+    </div>
+  </section>
+
+  <!-- RESOURCES -->
+  <section id="learn" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Keep going with these</h2>
+        <p>Some people learn from articles, some from a live instructor. Here are both, so you can pick the way that suits your week.</p>
+      </div>
+
+      <h3 class="sub-title">Articles worth a bookmark</h3>
+      <div class="rgrid">
+        <a class="res" href="https://www.justacademy.co/blog-detail/react-js-interview-questions-and-answers-for-developers" target="_blank" rel="noopener">
+          <span class="kind">Guide</span>
+          <h3>React JS interview questions and answers for developers</h3>
+          <p>The long version of this page, with the reasoning behind each answer.</p>
+          <span class="go">Read the guide</span>
+        </a>
+        <a class="res" href="https://www.justacademy.co/blog-detail/react-hooks-and-state-management-a-developers-guide-for-2026" target="_blank" rel="noopener">
+          <span class="kind">Guide</span>
+          <h3>React hooks and state management in 2026</h3>
+          <p>When to reach for useState, useReducer, context or something bigger.</p>
+          <span class="go">Read the guide</span>
+        </a>
+        <a class="res" href="https://www.justacademy.co/blog-detail/react-js-developer-roadmap-2026-from-javascript-to-job-ready-developer" target="_blank" rel="noopener">
+          <span class="kind">Roadmap</span>
+          <h3>React JS developer roadmap 2026</h3>
+          <p>From JavaScript basics to a profile that is ready for job applications.</p>
+          <span class="go">See the roadmap</span>
+        </a>
+        <a class="res" href="https://www.justacademy.co/blog-detail/how-real-projects-help-freshers-get-it-jobs" target="_blank" rel="noopener">
+          <span class="kind">Career</span>
+          <h3>How real projects help freshers get IT jobs</h3>
+          <p>Why one honest project story beats ten tutorial screenshots.</p>
+          <span class="go">Read the article</span>
+        </a>
+      </div>
+
+      <h3 class="sub-title">Learn it live with a mentor, Delhi and online</h3>
+      <div class="rgrid">
+        <a class="res course" href="https://www.justacademy.co/course-detail/delhi/react-js-training-in-delhi" target="_blank" rel="noopener">
+          <span class="kind">Course</span>
+          <h3>React JS training in Delhi</h3>
+          <p>Instructor led live sessions with mentor reviews of your own code.</p>
+          <span class="go">View the course</span>
+        </a>
+        <a class="res course" href="https://www.justacademy.co/course-detail/delhi/javascript-training-in-delhi" target="_blank" rel="noopener">
+          <span class="kind">Course</span>
+          <h3>JavaScript training in Delhi</h3>
+          <p>Closures, promises and array methods, the base every react answer stands on.</p>
+          <span class="go">View the course</span>
+        </a>
+        <a class="res course" href="https://www.justacademy.co/course-detail/delhi/python-training-in-delhi" target="_blank" rel="noopener">
+          <span class="kind">Course</span>
+          <h3>Python training in Delhi</h3>
+          <p>A friendly second language that opens backend and data roles.</p>
+          <span class="go">View the course</span>
+        </a>
+        <a class="res boot" href="https://www.justacademy.co/job-bootcamp-detail/delhi/mern-stack-developer-course-in-delhi-live-online-react-full-stack-product-development-training" target="_blank" rel="noopener">
+          <span class="kind">Bootcamp</span>
+          <h3>MERN stack developer course in Delhi</h3>
+          <p>React, Node, Express and MongoDB, built into one live product.</p>
+          <span class="go">View the bootcamp</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="cta">
+        <div>
+          <h2>Want someone to ask you the awkward follow up questions?</h2>
+          <p>Sit in a live interactive class, watch how an instructor explains a tricky hook, and decide for yourself. The demo is free.</p>
+        </div>
+        <div class="btns">
+          <a class="btn blue" href="https://www.justacademy.co/register-for-course-demo" target="_blank" rel="noopener">Book a free demo</a>
+          <a class="btn white" href="https://www.justacademy.co/course-detail/delhi/react-js-training-in-delhi" target="_blank" rel="noopener">See the React course</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">{ }</span><span>ReactReady</span></a>
+        <p class="about">A small, free practice space for developers preparing for react js interviews in Delhi NCR and beyond.</p>
+      </div>
+      <div>
+        <h4>On this page</h4>
+        <ul>
+          <li><a href="#practice">Flashcards</a></li>
+          <li><a href="#explore">Questions</a></li>
+          <li><a href="#ready">Readiness check</a></li>
+          <li><a href="#learn">Guides and courses</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Articles</h4>
+        <ul>
+          <li><a href="https://www.justacademy.co/blog-detail/react-js-interview-questions-and-answers-for-developers" target="_blank" rel="noopener">Interview questions guide</a></li>
+          <li><a href="https://www.justacademy.co/blog-detail/react-hooks-and-state-management-a-developers-guide-for-2026" target="_blank" rel="noopener">Hooks and state</a></li>
+          <li><a href="https://www.justacademy.co/blog-detail/react-js-developer-roadmap-2026-from-javascript-to-job-ready-developer" target="_blank" rel="noopener">Developer roadmap</a></li>
+          <li><a href="https://www.justacademy.co/blog-detail/how-real-projects-help-freshers-get-it-jobs" target="_blank" rel="noopener">Real projects</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Courses</h4>
+        <ul>
+          <li><a href="https://www.justacademy.co/course-detail/delhi/react-js-training-in-delhi" target="_blank" rel="noopener">React JS training</a></li>
+          <li><a href="https://www.justacademy.co/course-detail/delhi/javascript-training-in-delhi" target="_blank" rel="noopener">JavaScript training</a></li>
+          <li><a href="https://www.justacademy.co/course-detail/delhi/python-training-in-delhi" target="_blank" rel="noopener">Python training</a></li>
+          <li><a href="https://www.justacademy.co/job-bootcamp-detail/delhi/mern-stack-developer-course-in-delhi-live-online-react-full-stack-product-development-training" target="_blank" rel="noopener">MERN stack bootcamp</a></li>
+          <li><a href="https://www.justacademy.co/register-for-course-demo" target="_blank" rel="noopener">Free demo</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>React JS Interview Questions and Answers for Developers</span>
+      <span id="year"></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var Q=[
+    {c:"Fundamentals",q:"What is the virtual DOM?",a:"A lightweight copy of the page that React keeps in memory. When state changes, React builds a new copy, compares it with the old one and updates only the parts of the real DOM that differ. It is not always faster than hand written updates. Its real value is that you describe the screen and React works out the steps."},
+    {c:"Fundamentals",q:"Why can a browser not read JSX?",a:"JSX is shorthand for function calls that create React elements. A tool such as Babel, or the compiler inside Vite or Next JS, turns it into plain JavaScript before the browser ever sees it."},
+    {c:"Fundamentals",q:"Is React a library or a framework?",a:"Strictly a library, because it handles the view layer and leaves routing and data fetching to you. Teams often add Next JS or React Router to get framework like behaviour."},
+    {c:"Components",q:"What is the difference between props and state?",a:"Props are read only inputs from a parent. State is data a component owns that can change and triggers a rerender. Props are the arguments, state is the memory. If a value can be calculated from existing props or state, do not store it as state."},
+    {c:"Components",q:"Why do list items need keys?",a:"Keys give each item a stable identity so React can tell what was added, removed or moved. Index keys are only safe for lists that never reorder or filter. The key is the identity of the item, not its seat number."},
+    {c:"Components",q:"What is prop drilling and how do you avoid it?",a:"Passing data through layers that do not need it just to reach a deep child. Context, composition or a state library can help, but context is not a cure for everything, since it can trigger extra rerenders."},
+    {c:"Hooks",q:"Why does a useState update feel delayed?",a:"The setter schedules a rerender instead of changing the variable on the spot, so logging right after setting shows the old value. When the next value depends on the previous one, pass a function to the setter."},
+    {c:"Hooks",q:"When does useEffect run?",a:"After render. With no dependency array it runs every time, with an empty array once, and with listed values whenever they change. It can return a cleanup function. Effects are for syncing with things outside React, not for calculating values you could compute while rendering."},
+    {c:"Hooks",q:"When would you use useRef?",a:"To reach a DOM element, or to keep a value that must survive renders without causing one, like a timer id. Changing a ref does not redraw anything, and that is the key difference from state."},
+    {c:"Hooks",q:"When is useReducer better than useState?",a:"When state has several related fields or transitions that follow named actions, such as a cart or a multi step form. For one toggle, useState is simpler and perfectly fine."},
+    {c:"Hooks",q:"What are the rules of hooks?",a:"Call hooks only at the top level of a component or custom hook, never inside loops or conditions. React tracks hooks by call order, so changing that order attaches state to the wrong hook."},
+    {c:"Performance",q:"What causes a component to rerender?",a:"Its own state changing, its parent rerendering, or a context it uses changing. Rendering is usually cheap, so measure with the profiler before reaching for React.memo, useMemo or useCallback."},
+    {c:"Performance",q:"How do code splitting and Suspense help?",a:"They break the bundle into pieces that load on demand. React.lazy imports a component dynamically and Suspense shows a fallback while it loads. Route level splitting is the most common place to start."},
+    {c:"Performance",q:"What are error boundaries?",a:"Class components that catch errors in their child tree while rendering and show a fallback instead of a blank page. They do not catch errors in event handlers or async code."},
+    {c:"Auth and data",q:"How do you handle login authentication in React?",a:"The user sends credentials to a backend, which returns a token or sets a secure cookie. The frontend keeps session state, often in context, and protects routes by redirecting visitors who are not signed in. Real security lives on the server, since frontend checks only shape the experience."},
+    {c:"Auth and data",q:"Controlled or uncontrolled inputs?",a:"Controlled inputs keep their value in React state, which makes validation and resetting easy. Uncontrolled inputs let the DOM hold the value and you read it through a ref. Pick controlled by default and say why."},
+    {c:"Ecosystem",q:"How is Next JS different from React?",a:"Next JS is a framework built on React that adds file based routing, server rendering and static generation. It extends React, it does not replace it."},
+    {c:"Ecosystem",q:"How do you test React components?",a:"Most teams use Jest or Vitest with React Testing Library. Render the component, click or type like a user would, and check what appears on screen instead of inspecting internal state."}
+  ];
+  var CATS=["All"].concat(Q.reduce(function(a,x){if(a.indexOf(x.c)<0)a.push(x.c);return a},[]));
+  var $=function(id){return document.getElementById(id)};
+  function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+  function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
+
+  /* mobile menu */
+  var mb=$("menuBtn"),nl=$("navList");
+  mb.addEventListener("click",function(){var o=nl.classList.toggle("open");mb.setAttribute("aria-expanded",o)});
+  nl.addEventListener("click",function(e){if(e.target.closest("a")){nl.classList.remove("open");mb.setAttribute("aria-expanded","false")}});
+  $("year").textContent="Copyright "+new Date().getFullYear();
+
+  /* flashcard deck */
+  var DECK_SIZE=8,deck,idx,good,bad,marks,flipped;
+  var stack=$("stack"),flipBtn=$("flipBtn"),goodBtn=$("goodBtn"),badBtn=$("badBtn");
+  function startDeck(){
+    deck=shuffle(Q).slice(0,DECK_SIZE);idx=0;good=0;bad=0;marks=[];flipped=false;
+    renderDots();showCard(true);
+  }
+  function renderDots(){
+    var h="";for(var i=0;i<deck.length;i++){h+='<i class="'+(i===idx?"now":marks[i]||"")+'"></i>'}
+    $("dots").innerHTML=h;
+    $("deckCount").textContent=idx<deck.length?"Card "+(idx+1)+" of "+deck.length:"All done";
+  }
+  function showCard(first){
+    if(idx>=deck.length){return showResult()}
+    var c=deck[idx];flipped=false;
+    stack.innerHTML='<button class="card enter" id="card" type="button" aria-label="Flip card to see the answer">'+
+      '<div class="card-in">'+
+      '<div class="face front"><span class="tag">'+esc(c.c)+'</span><h3>'+esc(c.q)+'</h3><span class="hint">Say your answer out loud, then flip.</span></div>'+
+      '<div class="face back"><span class="tag">Answer</span><p>'+esc(c.a)+'</p><span class="hint">How close was yours?</span></div>'+
+      '</div></button>';
+    $("card").addEventListener("click",flip);
+    flipBtn.textContent="Show answer";goodBtn.disabled=true;badBtn.disabled=true;flipBtn.disabled=false;
+    renderDots();
+  }
+  function flip(){
+    var card=$("card");if(!card)return;
+    flipped=!flipped;card.classList.toggle("flipped",flipped);
+    flipBtn.textContent=flipped?"Show question":"Show answer";
+    goodBtn.disabled=!flipped;badBtn.disabled=!flipped;
+  }
+  function rate(ok){
+    var card=$("card");if(!card||!flipped)return;
+    marks[idx]=ok?"good":"bad";if(ok)good++;else bad++;
+    card.classList.remove("enter");card.classList.add("leave");
+    goodBtn.disabled=true;badBtn.disabled=true;flipBtn.disabled=true;
+    setTimeout(function(){idx++;showCard()},reduced()?0:420);
+  }
+  function reduced(){return window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches}
+  function showResult(){
+    renderDots();
+    var title,txt;
+    if(good===deck.length){title="Clean sweep.";txt="You nailed every card. Try the full guide for the trickier follow ups, or reshuffle for a new hand.";burst()}
+    else if(good>=deck.length/2){title=good+" of "+deck.length+" nailed.";txt="Solid. The ones you marked for practice are your homework for tonight. Open them in the explorer below."}
+    else{title=good+" of "+deck.length+" nailed.";txt="Good news: you now know exactly where to look. Open the explorer, pick one topic and rebuild your answer in your own words."}
+    stack.innerHTML='<div class="result"><h3>'+title+'</h3><p>'+txt+'</p><div><button class="btn blue" id="again" type="button">Deal a new hand</button></div></div>';
+    $("again").addEventListener("click",startDeck);
+    flipBtn.textContent="Show answer";flipBtn.disabled=true;goodBtn.disabled=true;badBtn.disabled=true;
+  }
+  flipBtn.addEventListener("click",flip);
+  goodBtn.addEventListener("click",function(){rate(true)});
+  badBtn.addEventListener("click",function(){rate(false)});
+  startDeck();
+
+  /* explorer */
+  var cat="All",term="";
+  var chips=$("chips");
+  var chipHtml=CATS.map(function(c){return '<button class="chip" type="button" data-c="'+esc(c)+'" aria-pressed="'+(c===cat)+'">'+esc(c)+'</button>'}).join("");
+  chips.innerHTML=chipHtml+'<input class="search" id="search" type="search" placeholder="Search a keyword, like keys or hooks" aria-label="Search questions">';
+  function renderQ(){
+    var list=Q.filter(function(x){
+      var inCat=cat==="All"||x.c===cat;
+      var t=term.toLowerCase();
+      return inCat&&(!t||(x.q+" "+x.a+" "+x.c).toLowerCase().indexOf(t)>-1);
+    });
+    $("qgrid").innerHTML=list.length?list.map(function(x){
+      return '<details class="q"><summary>'+esc(x.q)+'</summary><div class="ans"><small>'+esc(x.c)+'</small><p>'+esc(x.a)+'</p></div></details>';
+    }).join(""):'<div class="empty">Nothing matches that search. Try a shorter word, or switch the topic back to All.</div>';
+  }
+  chips.addEventListener("click",function(e){
+    var b=e.target.closest(".chip");if(!b)return;
+    cat=b.getAttribute("data-c");
+    [].forEach.call(chips.querySelectorAll(".chip"),function(x){x.setAttribute("aria-pressed",x===b)});
+    renderQ();
+  });
+  $("search").addEventListener("input",function(e){term=e.target.value.trim();renderQ()});
+  renderQ();
+
+  /* readiness */
+  var ITEMS=[
+    "I can explain the virtual DOM without saying the word magic",
+    "I know why a list needs a stable key",
+    "I can say when useEffect runs and why cleanup exists",
+    "I can explain useRef versus useState in one breath",
+    "I can describe a custom hook I actually wrote",
+    "I know how login and protected routes fit together",
+    "I can build a debounced search box on a blank screen",
+    "I have one project story with a real bug in it"
+  ];
+  var checks=$("checks");
+  checks.innerHTML=ITEMS.map(function(t,i){return '<label class="check"><input type="checkbox" data-i="'+i+'"><span>'+esc(t)+'</span></label>'}).join("");
+  var MSGS=[
+    "Nothing ticked yet. Start with the first one, it is the easiest.",
+    "A start. Pick one unticked item and explain it aloud right now.",
+    "Getting warmer. Notice which ones felt shaky, those are your real syllabus.",
+    "Past halfway. Now practise saying these answers with a timer running.",
+    "Nearly there. One mock interview with a friend should close the gap.",
+    "Everything ticked. Go and prove it in a real conversation."
+  ];
+  var celebrated=false;
+  function updateMeter(){
+    var boxes=checks.querySelectorAll("input"),n=0;
+    [].forEach.call(boxes,function(b){if(b.checked)n++});
+    var p=Math.round(n/ITEMS.length*100);
+    $("pct").textContent=p+"%";$("fill").style.width=p+"%";$("bar").setAttribute("aria-valuenow",p);
+    var m=n===0?0:n===ITEMS.length?5:Math.min(4,1+Math.floor(n/ITEMS.length*4));
+    if(n===ITEMS.length&&m===5)m=5;else if(m===5)m=4;
+    $("msg").textContent=MSGS[m];
+    if(n===ITEMS.length&&!celebrated){celebrated=true;burst()}
+    if(n<ITEMS.length)celebrated=false;
+  }
+  checks.addEventListener("change",updateMeter);
+  $("reset").addEventListener("click",function(){[].forEach.call(checks.querySelectorAll("input"),function(b){b.checked=false});updateMeter()});
+  updateMeter();
+
+  /* confetti */
+  function burst(){
+    if(reduced())return;
+    var colors=["#FFD23F","#3D4BFF","#A8F0C6","#FF8FB1"];
+    for(var i=0;i<46;i++){
+      var d=document.createElement("div");d.className="bit";
+      d.style.left=Math.random()*100+"vw";
+      d.style.background=colors[i%colors.length];
+      d.style.animationDelay=Math.random()*.5+"s";
+      d.style.animationDuration=1.4+Math.random()*1.2+"s";
+      document.body.appendChild(d);
+      setTimeout((function(el){return function(){el.remove()}})(d),3400);
+    }
+  }
+})();
+</script>
+</body>
+</html>
